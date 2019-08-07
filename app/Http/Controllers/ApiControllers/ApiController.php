@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Response;
 class ApiController extends Controller
 {
 
-    protected $statusCode;
+    protected $statusCode = 200;
 
     /**
      * @return mixed
