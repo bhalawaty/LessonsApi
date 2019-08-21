@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Response;
 class ApiController extends Controller
 {
 
+    const HTTP_NOT_FOUND = 404;
+    const HTTP_success = 200;
     protected $statusCode = 200;
 
     /**
@@ -35,7 +37,22 @@ class ApiController extends Controller
      */
     public function RespondNotFound($message = 'not found!')
     {
-        return $this->setStatusCode(404)->RespondWithError($message);
+        return $this->setStatusCode(self::HTTP_NOT_FOUND)->RespondWithError($message);
+    }
+
+    public function RespondCreated($message)
+    {
+        return $this->setStatusCode(self::HTTP_success)->RespondWithSuccess($message);
+    }
+
+    public function RespondWithSuccess($message)
+    {
+        return $this->respond([
+            'Success' => [
+                'message' => $message,
+                'status_code' => $this->getStatusCode()
+            ]
+        ]);
     }
 
     public function RespondWithError($message)

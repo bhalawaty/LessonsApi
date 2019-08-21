@@ -16,6 +16,9 @@ Route::get('lessons' ,'ApiControllers\LessonController@index');
 
 Route::get('lesson/{id}' ,'ApiControllers\LessonController@show');
 
+Route::post('lessons', 'ApiControllers\LessonController@store');
+
+
 Route::fallback(function(){
     return response()->json([
         'message' => 'Page Not Found. If error persists, contact info@website.com'], 404);
