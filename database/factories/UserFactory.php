@@ -14,13 +14,14 @@ use Faker\Generator as Faker;
 |
 */
 
+
 $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => "bilal",
         'email' => "bilal@yahoo.com",
         'email_verified_at' => now(),
-        'password' => encrypt('123456'), // secret
-        'remember_token' => Str::random(10),
+        'password' => $faker->encrypt('123456'), // secret
+        'remember_token' => $faker->Str::random(10),
     ];
 });
 
